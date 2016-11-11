@@ -5,6 +5,13 @@
  * @variable PRIVATE { Number } `total`
  * @return {object} `calculator` object that can be used
  */
+function calculatorModule(){
+
+var _memory = 0;
+var _total = 0; 
+
+ 
+
 
 
   /**
@@ -13,17 +20,55 @@
    * @return { Number }    current total
    */
 
+  /* function load(x){
+     _total = x;
+
+      return _total;
+      
+   } */
+
+
+
+   
+
+  
+   function load(x){
+    if(typeof x === 'number'){
+          _total = x;
+         return _total;
+        } else {
+          throw new Error();
+         }
+      
+   }
+
+
+
+
 
   /**
    * Return the value of `total`
    * @return { Number }
    */
 
+   function getTotal() {
+    return _total;
+   }
+
 
   /**
    * Sums the value passed in with `total`
    * @param { Number } x
    */
+   function add(x){
+    if(typeof x === 'number'){
+          _total += x;
+          return _total;
+        } else {
+          throw new Error();
+        }
+    
+   }
 
 
   /**
@@ -32,11 +77,28 @@
    */
 
 
+      function subtract(x){
+        if(typeof x === 'number'){
+          _total -= x;
+          return _total;
+        } else {
+          throw new Error();
+        }
+      }
+
   /**
    * Multiplies the value by `total`
    * @param  { Number } x
    */
 
+      function multiply(x){
+       if(typeof x === 'number'){
+          _total *= x;
+          return _total;
+        } else {
+          throw new Error();
+         }
+      }
 
   /**
    * Divides the value passing in by `total`
@@ -44,22 +106,68 @@
    */
 
 
+      function divide(x){
+       if(typeof x === 'number'){
+          _total /= x;
+          return _total;
+        } else {
+          throw new Error();
+         }
+      }
+
   /**
    * Return the value stored at `memory`
    * @return { Number }
    */
 
+      function recallMemory(){
+        return _memory;
+      }
 
   /**
    * Stores the value of `total` to `memory`
    */
 
+      function saveMemory(){
+        _memory = _total;
+      }
+
 
   /**
    * Clear the value stored at `memory`
    */
+        function clearMemory(){
+          _memory = 0;
+        }
 
   /**
    * Validation
    */
 
+
+    /*function validation(){
+        if(typeof x === 'number'){
+          return x;
+        } else {
+          throw new Error();
+        }
+      } */
+      
+
+
+    return{
+      load: load,
+      getTotal: getTotal,
+      add: add,
+      subtract: subtract,
+      multiply: multiply,
+      divide: divide,
+      recallMemory: recallMemory,
+      saveMemory: saveMemory,
+      clearMemory: clearMemory,
+      
+
+  };
+
+  
+}
